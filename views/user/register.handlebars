@@ -1,0 +1,31 @@
+{{#each error}}
+    <div class="msg error">{{texto}}</div>
+{{else}}
+{{/each}}
+<div class="container">
+    <form class="formRegister" action="register" method="post">
+        <h2>Cadastrar</h2>
+        <div class="inputs">
+            <input type="text" name="name" placeholder="Digite seu nome.">
+        </div>
+        <div class="inputs">
+            <input type="email" name="email" placeholder="Digite seu Email.">
+        </div>
+        <div class="inputs">
+            <input type="password" name="password" placeholder="Digite sua senha.">
+        </div>
+        <div class="inputs">
+            <input type="password" name="passwordConf" placeholder="Confirme sua senha.">
+        </div>
+        <div class="btnCad">
+            <button type="submit" class="btnCadastrar">Cadastrar</button>
+        </div>
+
+    </form>
+    <div class="line">
+        <hr>
+    </div>
+    <div class="register">
+        <a href="/user/login">Logar</a>
+    </div>
+</div>

@@ -1,0 +1,384 @@
+*{
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+body{
+    background: #fbfbfb;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased !important
+}
+li{
+    list-style: none;
+}
+
+header{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #8B008B;
+
+    box-shadow: 1px 0 3px rgba(0,0,0,0.4);
+}
+header div.nav{
+    width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+header div.nav .btnLogout{
+    color: #fff;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+}
+.headerTitle{
+    color: white;
+    padding-left: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+}
+.msg{
+    width: 100%;
+    height: 30px;
+    
+    color: #fff;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.success{
+    margin-top: 1px;
+    background: #1E90FF;
+}
+.error{
+    margin-top: 1px;
+    background: #fc4c4c;
+}
+
+.main{
+    max-width: 900px;
+    margin: 0 auto;
+}
+footer{
+    width: 100%;
+    height: 50px;
+    background: #8B008B;
+
+    color: #fff;
+    font-weight: bold;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div.newPost{
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 50px 0;
+    padding: 25px;
+
+    background: #fff;
+    box-shadow: 1px 0 3px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+div.newPost div.infoUser{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div.newPost div.infoUser div.imgUser{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #333;
+}
+div.newPost div.infoUserPerfil{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div.newPost div.infoUserPerfil div.imgUserPerfil{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #333;
+}
+div.newPost div.infoUserPerfil strong{
+    font-size:  26px;
+    margin-left: 15px;
+    color: #8B008B;
+}
+div.newPost div.userDados p{
+    font-size:  15px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+div.newPost div.userDados strong{
+    font-weight: lighter;
+    font-family: 'Roboto', sans-serif;
+}
+div.newPost div.infoUser strong{
+    font-size:  16px;
+    margin-left: 10px;
+    color: #8B008B;
+}
+div.newPost form.formPost{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+div.newPost form.formPost textarea{
+    height: 90px;
+    background: #fbfbfb;
+    margin: 15px 0;
+    padding: 25px;
+    border-radius: 10px;
+    resize: none;
+    outline: none;
+    border: 0;
+
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #727272;
+}
+.boxImg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgFeed{
+    max-width: 100%;
+    max-height: 600px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+div.newPost form.formPost div.iconsAndButton{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+div.newPost form.formPost div.iconsAndButton div.icons button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    outline: none;
+    margin-right: 15px;
+    border: 0;
+    background: #fff;
+    
+    cursor: pointer;
+}
+div.newPost form.formPost div.iconsAndButton button.btnSubmitForm{
+    background:#8B008B ;
+    padding: 10px 50px;
+    color: #fff;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+
+    border: 0;
+    border-radius: 10px;
+
+    transition: background 0.2s;
+}
+div.newPost form.formPost div.iconsAndButton button.btnSubmitForm:hover{
+    background:#4e044e ;
+}
+
+ul.posts li.post{
+    margin-bottom: 50px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    width: 100%;
+    box-shadow: 1px 0 3px rgba(0,0,0,0.05);
+}
+ul.posts li.post div.infoUserPost{
+    display: flex;
+    align-items: center;
+}
+
+ul.posts li.post div.infoUserPost div.nameAndHour{
+    margin-left: 10px;
+}
+
+ul.posts li.post div.infoUserPost div.imgUserPost{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #333;
+}
+ul.posts li.post div.infoUserPost div.nameAndHour >strong{
+    color: #8B008B;
+}
+ul.posts li.post div.infoUserPost div.nameAndHour >p{
+    color: #d1d1d1;
+    font-size: 12px;
+}
+ul.posts li.post >p{
+    width: 100%;
+    margin: 20px 0;
+    font-weight: bold;
+    color: #727272;
+}
+ul.posts li.post div.btnPost{
+    display: flex;
+    align-items: center;
+    position: relative;
+
+}
+ul.posts li.post div.btnPost button{
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+
+    border: 0;
+    outline: none;
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+.like{
+    background: #ff6868;
+}
+.like:hover{
+    background: #fc4c4c;
+}
+.edit{
+    background: #3447d8;
+}
+.edit:hover{
+    background: #1e32c5;
+}
+
+/*Tela registro*/
+
+.container{
+    width: 400px;
+    background: #8B008B;
+    margin: auto;
+    margin-top: 50px;
+    padding: 50px;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 1px 0 3px rgba(0,0,0,0.5);
+}
+form.formRegister h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+form.formRegister input{
+   width: 100%;
+   height: 30px;
+   border-radius: 10px;
+   border: none;
+   outline: none;
+   color: #727272;
+   padding-left: 5px;
+   font-weight: bold;
+   text-align: center;
+}
+form.formRegister div.inputs{
+    margin-top: 10px;
+}
+form.formRegister div.btnCad button{
+    
+    padding: 5px 20px;
+    border-radius: 10px;
+    
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 16px;
+    background: #4169E1;
+    
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    
+    transition: background 0.2s;
+    
+}
+form.formRegister div.btnCad button:hover{
+    background:#133bb3;
+}
+form.formRegister div.btnCad{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.line{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.line hr{
+ 
+    margin-top: 10px;
+    border: 1px solid #fff;
+    width: 70%;
+
+}
+.register{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.register a{
+    margin-top: 5px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+a{
+    text-decoration: none;
+}
+.textStrong{
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #727272;
+    font-size: 13px;
+    position: absolute;
+    right: 0;
+}
+.inputImg{
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    height: 20px;
+    margin-bottom: 10px;
+    outline: none;
+    background: #fbfbfb;
+    padding: 15px 25px;
+
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #727272;
+}

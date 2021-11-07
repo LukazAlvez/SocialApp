@@ -1,0 +1,64 @@
+<main class="main">
+
+    <div class="newPost">
+        <div class="infoUser">
+            <div class="imgUser">
+
+            </div>
+            {{#each user}}
+            {{#if name}}
+            <a href="/user/perfil"><strong>{{name}}</strong></a>
+            {{/if}}
+            {{else}}
+            <strong>Usuário</strong>
+            {{/each}}
+        </div>
+        <!--form-->
+        <form class="formPost" action="user/post/add" method="post">
+            <textarea name="feed" placeholder="No que está pensando?"></textarea>
+            <div id="addImg">
+
+            </div>
+
+            <div class="iconsAndButton">
+                <div class="icons">
+                    <img src="/img/btnImg.png" onclick="insertImg()" class="btnFileForm" width="25px"
+                        alt="Adicionar imagem">
+                </div>
+                <button type="submit" class="btnSubmitForm">Publicar</button>
+            </div>
+        </form>
+    </div>
+
+    <ul class="posts">
+        {{#each posts}}
+        <li class="post">
+            <div class="infoUserPost">
+                <div class="imgUserPost"></div>
+
+                <div class="nameAndHour">
+                    <strong>{{userPost}}</strong>
+                    <p>{{date}}</p>
+                </div>
+            </div>
+            <p>{{feed}}</p>
+            {{#if img}}
+            <div class="boxImg">
+                <img class="imgFeed" src="{{img}}" alt="">
+            </div>
+            {{else}}
+            {{/if}}
+            <div class="btnPost">
+                <form action="user/like" method="post">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" class="FilesPost like">Curtir</button>
+                </form>
+                <strong class="textStrong">Likes: {{likes}}</strong>
+            </div>
+        </li>
+        {{else}}
+        <strong>Nenhum post encontrado!</strong>
+        {{/each}}
+    </ul>
+
+</main>
