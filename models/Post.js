@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Post = new Schema({
-    userPost:{
+    user:{
         type: String,
         required: true
     },
-    feed:{
+    post:{
         type: String,
         required: true
     },

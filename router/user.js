@@ -10,6 +10,7 @@ const passport = require('passport');
 const { Passport } = require('passport');
 const { authUser } = require('../helpers/authUser')
 
+//tela perfil
 
 router.get('/perfil', authUser, (req, res) => {
     Post.find({userPost: req.user.name}).sort('-date').then((posts)=>{
@@ -95,12 +96,14 @@ router.post('/register', (req, res) => {
     }
 })
 
-//add postagem
+//add post
 router.post('/post/add', authUser, (req, res) => {
+
     const newPost = {
-        userPost: req.user.name,
-        feed: req.body.feed,
-        img: req.body.img
+        user: req.user.name,
+        post: req.body.feed,
+        img: req.body.img,
+        date: Date.now()
     }
 
     if (!req.body.feed || typeof req.body.feed == undefined || req.body.feed == null) {
@@ -143,8 +146,11 @@ router.get('/logout', (req,res)=>{
     res.redirect('/user/login')
 })
 
-
-
+dataNow = ()=>{
+    const data = new Date()
+    const day = ['domingo','segunda','terça','quarta','quinta','sexta','sábado']
+    return day[data.getDay()] + " às " + data.getHours() + ":" + data.getMinutes() 
+}
 
 // const validarRegistro = () =>{
 //     var error = []

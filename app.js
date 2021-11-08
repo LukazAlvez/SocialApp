@@ -67,9 +67,9 @@ const db = require('./config/db')
 
     app.use('/user', user)
 
-    //listando postagens
+    //pagina inicial
     app.get('/',authUser, (req, res)=>{
-        Post.find().sort('-date').then((posts)=>{
+        Post.find().sort({date: '-1'}).then((posts)=>{
             res.render('main/index', {posts: posts.map(posts => posts.toJSON())}); 
         }).catch((err)=>{
             console.log(err)

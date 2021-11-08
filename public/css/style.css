@@ -36,6 +36,7 @@ header div.nav .btnLogout{
     font-weight: bold;
     position: absolute;
     right: 0;
+    padding-right: 25px;
 }
 .headerTitle{
     color: white;
