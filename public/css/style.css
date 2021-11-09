@@ -116,6 +116,11 @@ div.newPost div.infoUserPerfil div.imgUserPerfil{
     border-radius: 50%;
     background: #333;
 }
+div.newPost div.infoUserPerfil div.imgUserPerfil img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
 div.newPost div.infoUserPerfil strong{
     font-size:  26px;
     margin-left: 15px;

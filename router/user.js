@@ -100,9 +100,10 @@ router.post('/register', (req, res) => {
 router.post('/post/add', authUser, (req, res) => {
 
     const newPost = {
-        user: req.user.name,
+        userName: req.user.name,
         post: req.body.feed,
         img: req.body.img,
+        datePost: dateNow(),
         date: Date.now()
     }
 
@@ -146,7 +147,7 @@ router.get('/logout', (req,res)=>{
     res.redirect('/user/login')
 })
 
-dataNow = ()=>{
+dateNow = ()=>{
     const data = new Date()
     const day = ['domingo','segunda','terça','quarta','quinta','sexta','sábado']
     return day[data.getDay()] + " às " + data.getHours() + ":" + data.getMinutes() 

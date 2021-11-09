@@ -1,44 +1,57 @@
 <div class="main">
-   <div class="newPost">
+    <div class="newPost">
         <div class="infoUserPerfil">
-            <div class="imgUserPerfil"></div>
+
+            <div class="imgUserPerfil">
+                {{#each user}}
+                {{#if imgPerfil}}
+                <img src="{{imgPerfil}}" alt="">
+                {{/if}}
+                {{/each}}
+            </div>
+
             {{#each user}}
-                {{#if name}}
-                <strong>{{name}}</strong>
-                {{/if}}
+            {{#if name}}
+            <strong>{{name}}</strong>
+            {{/if}}
             {{else}}
-                <strong>Usuário</strong>
+            <strong>Usuário</strong>
             {{/each}}
+
         </div>
+
         <div class="userDados">
-             {{#each user}}
-                {{#if email}}
-                <p>Email: <strong>{{email}}</strong></p>
-                {{/if}}
-                {{#if email}}
-                <p>Conta Criada: <strong>{{date}}</strong></p>
-                {{/if}}
+
+            {{#each user}}
+            {{#if email}}
+            <p>Email: <strong>{{email}}</strong></p>
+            {{/if}}
+
             {{else}}
-                <p>Email:</p>
+            <p>Email:</p>
             {{/each}}
+
         </div>
     </div>
     <ul class="posts">
-        {{#each posts}}
+        {{#each posts }}
         <li class="post">
             <div class="infoUserPost">
-                <div class="imgUserPost"></div>
+
+                <div class="imgUserPost">
+
+      
+                </div>
 
                 <div class="nameAndHour">
-                    <strong>{{user}}</strong>
-                    <p>{{date}}</p>
+                    <strong>{{userName}}</strong>
+                    <p>{{datePost}}</p>
                 </div>
             </div>
             <p>{{post}}</p>
             {{#if img}}
             <div class="boxImg">
-                <img class="imgFeed"
-                    src="{{img}}" alt="">
+                <img class="imgFeed" src="{{img}}" alt="">
             </div>
             {{else}}
             {{/if}}

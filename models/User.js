@@ -16,7 +16,6 @@ const User = new Schema({
     },
     imgPerfil:{
         type: String,
-        required: false
     },
     date: {
         type: Date,
