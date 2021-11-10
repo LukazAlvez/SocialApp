@@ -179,9 +179,18 @@ router.get('/logout', (req,res)=>{
 })
 
 dateNow = ()=>{
-    const data = new Date()
-    const day = ['domingo','segunda','terça','quarta','quinta','sexta','sábado']
-    return day[data.getDay()] + " às " + data.getHours() + ":" + data.getMinutes() 
+    const options = {
+        timeZone: 'America/Sao_Paulo',
+        hour: 'numeric',
+        minute: 'numeric'
+    };
+    const date = new Intl.DateTimeFormat([], options);
+    const dataAtual = date.format(new Date())
+   
+
+    const dias = new Date()
+    const semana = ['domingo','segunda','terça','quarta','quinta','sexta','sábado']
+    return semana[dias.getDay()] + " às " + dataAtual 
 }
 
 // const validarRegistro = () =>{
