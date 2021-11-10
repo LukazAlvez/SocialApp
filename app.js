@@ -11,6 +11,8 @@ const flash = require('connect-flash');
 const { post } = require('./router/user');
 require('./models/Post')
 const Post = mongoose.model('posts')
+require('./models/User')
+const User = mongoose.model('users')
 const passport = require('passport')
 require('./config/auth')(passport)
 const {authUser} = require('./helpers/authUser')
@@ -68,12 +70,14 @@ const db = require('./config/db')
     app.use('/user', user)
 
     //pagina inicial
-    app.get('/',authUser, (req, res)=>{
-        Post.find().sort({date: '-1'}).then((posts)=>{
-            res.render('main/index', {posts: posts.map(posts => posts.toJSON())}); 
-        }).catch((err)=>{
-            console.log(err)
-        })
+    app.get('/', authUser, async(req, res)=>{
+        try{
+            const posts = await Post.find().populate('user').sort({date: 'desc'})
+            return res.render('main/index',{posts: posts.map(posts => posts.toJSON())})
+           
+        }catch{
+            return res.send('error')
+        }
     })
 
 

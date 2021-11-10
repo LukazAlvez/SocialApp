@@ -1,8 +1,7 @@
 <div class="main">
     <div class="newPost">
         <div class="infoUserPerfil">
-
-            <div class="imgUserPerfil">
+            <div onclick="addImgPerfil()" class="imgUserPerfil">
                 {{#each user}}
                 {{#if imgPerfil}}
                 <img src="{{imgPerfil}}" alt="">
@@ -20,6 +19,7 @@
 
         </div>
 
+
         <div class="userDados">
 
             {{#each user}}
@@ -32,19 +32,23 @@
             {{/each}}
 
         </div>
+        <div class="addPerfil" id="addPerfil">
+
+        </div>
     </div>
     <ul class="posts">
-        {{#each posts }}
+        {{#each posts}}
         <li class="post">
             <div class="infoUserPost">
 
                 <div class="imgUserPost">
-
-      
+                    {{#if user.imgPerfil}}
+                    <img src="{{user.imgPerfil}}" alt="">
+                    {{/if}}
                 </div>
 
                 <div class="nameAndHour">
-                    <strong>{{userName}}</strong>
+                    <strong>{{user.name}}</strong>
                     <p>{{datePost}}</p>
                 </div>
             </div>
@@ -57,6 +61,12 @@
             {{/if}}
             <div class="btnPost">
                 <strong class="textStrong">Likes: {{likes}}</strong>
+            </div>
+            <div class="btnPost">
+                <form action="/user/delete" method="post">
+                    <input type="hidden" name="idPost" value="{{_id}}">
+                    <button type="submit" class="FilesPost like">Excluir</button>
+                </form>
             </div>
         </li>
         {{else}}

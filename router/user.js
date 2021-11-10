@@ -12,12 +12,29 @@ const { authUser } = require('../helpers/authUser')
 
 //tela perfil
 
-router.get('/perfil', authUser, (req, res) => {
-    Post.find({userPost: req.user.name}).sort('-date').then((posts)=>{
-        res.render('user/perfil', {posts: posts.map(posts => posts.toJSON())}); 
-    }).catch((err)=>{
-        console.log(err)
-    })
+router.get('/perfil', authUser, async (req, res) => {
+    try{
+        const posts = await Post.find({user: {_id: req.user._id}}).populate('user').sort({date: 'desc'})
+        return res.render('user/perfil',{posts: posts.map(posts => posts.toJSON())})
+       
+    }catch{
+        return res.send('error 404')
+    }
+})
+
+//editar img perfil
+router.post('/perfil', authUser, async (req, res) => {
+    try{
+        const filter = {_id: req.user._id}
+        const update = {imgPerfil: req.body.imgLink}
+        await User.findByIdAndUpdate(filter,update ,{new: true})
+        req.flash('success_msg', 'Imagem de perfil Salva')
+        res.redirect('/user/perfil')
+       
+    }catch{
+        req.flash('error_msg', 'Erro ao salvar a imagem de perfil')
+        res.redirect('/user/perfil')
+    }
 })
 
 //login
@@ -98,9 +115,9 @@ router.post('/register', (req, res) => {
 
 //add post
 router.post('/post/add', authUser, (req, res) => {
-
+    
     const newPost = {
-        userName: req.user.name,
+        user: req.user._id,
         post: req.body.feed,
         img: req.body.img,
         datePost: dateNow(),
@@ -122,6 +139,20 @@ router.post('/post/add', authUser, (req, res) => {
     }
 
 
+})
+//deletar posts
+router.post('/delete', authUser, async (req, res) => {
+    try{
+        const id = req.body.idPost
+        
+        await Post.findByIdAndRemove(id)
+        req.flash('success_msg', 'Post deletado')
+        res.redirect('/user/perfil')
+       
+    }catch{
+        req.flash('error_msg', 'Erro ao Deletar post')
+        res.redirect('/user/perfil')
+    }
 })
 
 //curtidas

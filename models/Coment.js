@@ -9,24 +9,15 @@ const Post = new Schema({
         require: true
     },
     post:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'posts',
+        require: true
+    },
+    coments:{
         type: String,
         required: true
     },
-    img:{
-        type: String,
-        required: false
-    },
-    likes:{
-        type: Number,
-        default: 0
-    },
-    datePost:{
-        type: String,
-    },
-    date: {
-        type: Date,
-        default: Date.now()
-    }
+
 });
 
-mongoose.model('posts', Post)
+mongoose.model('coments', Coment)

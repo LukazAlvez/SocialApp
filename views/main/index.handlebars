@@ -2,9 +2,16 @@
 
     <div class="newPost">
         <div class="infoUser">
+            <a href="/user/perfil">
             <div class="imgUser">
-
+                {{#each user}}
+                {{#if imgPerfil}}
+                <img src="{{imgPerfil}}" alt="">
+                {{/if}}
+                {{/each}}
             </div>
+            </a>
+            
             {{#each user}}
             {{#if name}}
             <a href="/user/perfil"><strong>{{name}}</strong></a>
@@ -35,11 +42,13 @@
         <li class="post">
             <div class="infoUserPost">
                 <div class="imgUserPost">
-                
+                    {{#if user.imgPerfil}}
+                    <img src="{{user.imgPerfil}}" alt="">
+                    {{/if}}
                 </div>
 
                 <div class="nameAndHour">
-                    <strong>{{userName}}</strong>
+                    <strong>{{user.name}}</strong>
                     <p>{{datePost}}</p>
                 </div>
             </div>

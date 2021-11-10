@@ -105,6 +105,13 @@ div.newPost div.infoUser div.imgUser{
     border-radius: 50%;
     background: #333;
 }
+div.newPost div.infoUser div.imgUser img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #333;
+}
+
 div.newPost div.infoUserPerfil{
     display: flex;
     align-items: center;
@@ -120,6 +127,10 @@ div.newPost div.infoUserPerfil div.imgUserPerfil img{
     width: 70px;
     height: 70px;
     border-radius: 50%;
+    cursor: pointer;
+}
+div.newPost div.infoUserPerfil div.imgUserPerfil img:hover{
+    opacity: 50%;
 }
 div.newPost div.infoUserPerfil strong{
     font-size:  26px;
@@ -231,6 +242,11 @@ ul.posts li.post div.infoUserPost div.imgUserPost{
     height: 30px;
     border-radius: 50%;
     background: #333;
+}
+ul.posts li.post div.infoUserPost div.imgUserPost img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }
 ul.posts li.post div.infoUserPost div.nameAndHour >strong{
     color: #8B008B;
@@ -387,4 +403,43 @@ a{
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
     color: #727272;
+}
+.insertImg{
+    margin-top:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 100%; 
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 0 3px rgba(0,0,0,0.5);
+
+}
+.insertImg input{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #d1d1d1;
+    width: 100%;
+    margin: 5px;
+    padding: 2px 15px;
+}
+.insertImg button{
+    padding: 2px 15px;
+    border-radius: 10px;
+    margin-right: 5px;
+    
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 16px;
+    background: #4169E1;
+    
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    
+    transition: background 0.2s;
+}
+.addPerfil{
+    width: 100%;
 }
