@@ -270,6 +270,7 @@ ul.posts li.post div.btnPost{
 ul.posts li.post div.btnPost button{
     padding: 5px 20px;
     border-radius: 10px;
+    margin-top: 10px;
     margin-right: 10px;
     display: flex;
     align-items: center;

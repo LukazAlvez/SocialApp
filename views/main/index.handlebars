@@ -60,22 +60,23 @@
             {{/if}}
             <div class="coment">
                 <form action="/user/coment" method="post">
+                    <input type="hidden" name="postId" value="{{_id}}"> 
                     <textarea placeholder="Deixe seu comentário." name="coment" id="" cols="30" rows="10"></textarea>
-                    <button>Comentar</button>
+                    <button type="submit" >Comentar</button>
                 </form>
             </div>
-            {{!-- {{#each coments}}
+            {{#each coments}}
             <div class="coments">
                 <strong>{{user}}</strong>
                 <p>{{coment}}</p>
-                <form class="delComent" action="/user/delete/coment" method="post">
+                {{!-- <form class="delComent" action="/user/delete/coment" method="post">
                     <input type="hidden" name="id" value="{{../_id}}">
                     <input type="hidden" name="indexComent" value="{{@index}}">
                 <button type="submit">Apagar</button>
-            </form>
+            </form> --}}
             </div>
             {{else}}
-            {{/each}} --}}
+            {{/each}}
 
             {{!-- <div class="btnPost">
                 <form action="user/like" method="post">
