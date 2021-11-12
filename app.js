@@ -8,15 +8,14 @@ const user = require('./router/user');
 const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
-const { post } = require('./router/user');
-require('./models/Post')
-const Post = mongoose.model('posts')
-require('./models/User')
+require('./models/Post');
+const Post = mongoose.model('posts');
+require('./models/User');
 const User = mongoose.model('users')
 const passport = require('passport')
-require('./config/auth')(passport)
-const {authUser} = require('./helpers/authUser')
-const db = require('./config/db')
+require('./config/auth')(passport);
+const {authUser} = require('./helpers/authUser');
+const db = require('./config/db');
 
 //configuracoes
 

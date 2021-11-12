@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 require('../models/User');
-const User = mongoose.model('users')
+const User = mongoose.model('users');
 require('../models/Post');
-const Post = mongoose.model('posts')
-const bcrypt = require('bcryptjs')
+const Post = mongoose.model('posts');
+const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { Passport } = require('passport');
-const { authUser } = require('../helpers/authUser')
+const { authUser } = require('../helpers/authUser');
+
 
 //tela perfil
 
@@ -120,7 +121,7 @@ router.post('/post/add', authUser, (req, res) => {
         user: req.user._id,
         post: req.body.feed,
         img: req.body.img,
-        datePost: dateNow(),
+        datePost: moment().add(3, 'days').calendar(),
         date: Date.now()
     }
 
@@ -141,7 +142,7 @@ router.post('/post/add', authUser, (req, res) => {
 
 })
 //deletar posts
-router.post('/delete', authUser, async (req, res) => {
+router.post('/delete/post', authUser, async (req, res) => {
     try{
         const id = req.body.idPost
         
@@ -154,23 +155,83 @@ router.post('/delete', authUser, async (req, res) => {
         res.redirect('/user/perfil')
     }
 })
+//comentar posts tela principal
+router.post('/coment', authUser, async (req, res)=>{
+    try{ 
+        const id = req.body.postId
+        const update = {
+            coments:{
+                user: req.user.name,
+                coment: req.body.coment
+            }
+        }
+        await Post.findByIdAndUpdate({_id: id},{$push:update})
+        req.flash("success_msg", "Sucesso!")
+        res.redirect('/')
+    }catch(err){
+        console.log(err)
+        req.flash("error_msg", "Houve um erro ao salvar.")
+        res.redirect('/')
+    }
+       
+})
+//comentar posts tela perfil
+router.post('/coment/perfil', authUser, async (req, res)=>{
+    try{ 
+        const id = req.body.postId
+        const update = {
+            coments:{
+                user: req.user.name,
+                coment: req.body.coment
+            }
+        }
+        await Post.findByIdAndUpdate({_id: id},{$push:update})
+        req.flash("success_msg", "Sucesso!")
+        res.redirect('/user/perfil')
+    }catch(err){
+        console.log(err)
+        req.flash("error_msg", "Houve um erro ao salvar.")
+        res.redirect('/user/perfil')
+    }
+       
+})
+//deletar comentario
+router.post('/delete/coment', authUser, async (req, res) => {
+    try{
+        
+        const id = req.body.id
+        const index = req.body.indexComent
+        console.log(index, id)
+        await Post.findOneAndUpdate({_id: id},
+           {$pull:{"coments": {index} }}
+        )
+        req.flash('success_msg', 'Comentário deletado')
+        res.redirect('/user/perfil')
+       
+    }catch(err){
+        console.log(err)
+        req.flash('error_msg', 'Erro ao Deletar comentário')
+        res.redirect('/')
+    }
+})
+
 
 //curtidas
-router.post('/like', authUser,(req, res)=>{
-    Post.findOne({_id: req.body.id}).then((posts)=>{
-        posts.likes += 1
+// router.post('/like', authUser,(req, res)=>{
+//     Post.findOne({_id: req.body.id}).then((posts)=>{
+//         posts.likes += 1
 
-        posts.save().then(()=>{
-            res.redirect('/')
-        }).catch((err)=>{
-            req.flash('error_msg', 'Houve um erro ao salvar')
-            console.log(err)
-            res.redirect('/')
-        })
-    }).catch((err)=>{
-        req.flash('error_msg', 'Erro interno')
-    })
-} )
+//         posts.save().then(()=>{
+//             res.redirect('/')
+//         }).catch((err)=>{
+//             req.flash('error_msg', 'Houve um erro ao salvar')
+//             console.log(err)
+//             res.redirect('/')
+//         })
+//     }).catch((err)=>{
+//         req.flash('error_msg', 'Erro interno')
+//     })
+// } )
 
 //logout
 router.get('/logout', (req,res)=>{
@@ -193,25 +254,4 @@ dateNow = ()=>{
     return semana[dias.getDay()] + " às " + dataAtual 
 }
 
-// const validarRegistro = () =>{
-//     var error = []
-
-//     if(!req.body.name || typeof req.body.name == undefined || req.body.name == null){
-//         error.push("Campo nome inválido")
-//     }
-//     if(!req.body.email || typeof req.body.email == undefined || req.body.email == null){
-//         error.push("Campo email inválido")
-//     }
-//     if(!req.body.password || typeof req.body.password == undefined || req.body.password == null){
-//         error.push("Campo senha inválido")
-//     }
-//     if(req.body.password < 8){
-//         error.push("Senha muito curta, digite uma senha com no mínimo 8 digitos")
-//     }
-//     if(req.body.password != req.body.password2 ){
-//         error.push("Senhas não conferem")
-//     }
-
-//     return error
-// }
 module.exports = router;

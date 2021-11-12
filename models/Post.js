@@ -20,6 +20,10 @@ const Post = new Schema({
         type: Number,
         default: 0
     },
+    coments:{
+        user: {type: String},
+        coment: {type: String}
+    },
     datePost:{
         type: String,
     },

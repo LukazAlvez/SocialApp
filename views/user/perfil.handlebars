@@ -62,8 +62,30 @@
             <div class="btnPost">
                 <strong class="textStrong">Likes: {{likes}}</strong>
             </div>
-            <div class="btnPost">
-                <form action="/user/delete" method="post">
+        
+             <div class="coment">
+                <form action="/user/coment/perfil" method="post">
+                    <input type="hidden" name="postId" value="{{_id}}">
+                    <textarea placeholder="Deixe seu comentário." name="coment" id="" cols="30" rows="10"></textarea>
+                    <button>Comentar</button>
+                </form>
+            </div>
+
+            {{#each coments}}
+            <div class="coments">
+                <strong>{{user}}</strong>
+                <p>{{coment}}</p>
+                <form class="delComent" action="/user/delete/coment" method="post">
+                    <input type="hidden" name="id" value="{{../_id}}">
+                    <input type="hidden" name="indexComent" value="{{@index}}">
+                <button type="submit">Apagar</button>
+            </form>
+            </div>
+            {{else}}
+            {{/each}}
+
+             <div class="btnPost">
+                <form action="/user/delete/post" method="post">
                     <input type="hidden" name="idPost" value="{{_id}}">
                     <button type="submit" class="FilesPost like">Excluir</button>
                 </form>

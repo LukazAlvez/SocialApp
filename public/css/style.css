@@ -205,7 +205,7 @@ div.newPost form.formPost div.iconsAndButton div.icons button{
 }
 div.newPost form.formPost div.iconsAndButton button.btnSubmitForm{
     background:#8B008B ;
-    padding: 10px 50px;
+    padding: 10px 25px;
     color: #fff;
     font-weight: bold;
     outline: none;
@@ -284,6 +284,92 @@ ul.posts li.post div.btnPost button{
     cursor: pointer;
 
     transition: background 0.2s;
+}
+.coment form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.coment textarea{
+    height: 35px;
+    background: #fbfbfb;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 10px;
+    resize: none;
+    outline: none;
+    border: 0;
+    width: 100%;
+
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #727272;
+}
+.coment button{
+    height: 35px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: darkslateblue;
+    font-weight: bold;
+    color: #fff;
+
+    border: 0;
+    outline: none;
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+.coment button:hover{
+    background: rgb(55, 41, 144);
+}
+.coments{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 5px;
+}
+.coments strong{
+    align-self: baseline;
+    color: #2a2a2a;
+    padding: 3px;
+    font-size: 12px;
+    width: 50px;
+}
+.coments p{
+    padding: 3px;
+    width: 100%;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    color: #727272;
+}
+
+
+.delComent button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #ff6868;
+    background: #fff;
+
+    border: 0;
+    outline: none;
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+.postComents{
+    display: flex;
 }
 .like{
     background: #ff6868;

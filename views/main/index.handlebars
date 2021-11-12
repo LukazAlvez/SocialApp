@@ -1,17 +1,16 @@
 <main class="main">
-
     <div class="newPost">
         <div class="infoUser">
             <a href="/user/perfil">
-            <div class="imgUser">
-                {{#each user}}
-                {{#if imgPerfil}}
-                <img src="{{imgPerfil}}" alt="">
-                {{/if}}
-                {{/each}}
-            </div>
+                <div class="imgUser">
+                    {{#each user}}
+                    {{#if imgPerfil}}
+                    <img src="{{imgPerfil}}" alt="">
+                    {{/if}}
+                    {{/each}}
+                </div>
             </a>
-            
+
             {{#each user}}
             {{#if name}}
             <a href="/user/perfil"><strong>{{name}}</strong></a>
@@ -59,13 +58,32 @@
             </div>
             {{else}}
             {{/if}}
-            <div class="btnPost">
+            <div class="coment">
+                <form action="/user/coment" method="post">
+                    <textarea placeholder="Deixe seu comentário." name="coment" id="" cols="30" rows="10"></textarea>
+                    <button>Comentar</button>
+                </form>
+            </div>
+            {{!-- {{#each coments}}
+            <div class="coments">
+                <strong>{{user}}</strong>
+                <p>{{coment}}</p>
+                <form class="delComent" action="/user/delete/coment" method="post">
+                    <input type="hidden" name="id" value="{{../_id}}">
+                    <input type="hidden" name="indexComent" value="{{@index}}">
+                <button type="submit">Apagar</button>
+            </form>
+            </div>
+            {{else}}
+            {{/each}} --}}
+
+            {{!-- <div class="btnPost">
                 <form action="user/like" method="post">
                     <input type="hidden" name="id" value="{{_id}}">
                     <button type="submit" class="FilesPost like">Curtir</button>
                 </form>
                 <strong class="textStrong">Likes: {{likes}}</strong>
-            </div>
+            </div> --}}
         </li>
         {{else}}
         <strong>Nenhum post encontrado!</strong>
