@@ -162,12 +162,19 @@ router.post('/coment', authUser, async (req, res)=>{
         const update = {
             coments:{
                 user: req.user.name,
-                coment: req.body.coment
+                coment: req.body.coment,
+                idComent: new mongoose.Types.ObjectId()
             }
         }
-        await Post.findByIdAndUpdate({_id: id},{$push:update})
-        req.flash("success_msg", "Sucesso!")
-        res.redirect('/')
+        if(!req.body.coment || typeof req.body.coment == undefined || req.body.coment == null){
+            req.flash("error_msg", "Houve um erro ao salvar.")
+            res.redirect('/')
+        }else{
+            await Post.findByIdAndUpdate({_id: id},{$push:update})
+            req.flash("success_msg", "Sucesso!")
+            res.redirect('/')
+        }
+        
     }catch(err){
         console.log(err)
         req.flash("error_msg", "Houve um erro ao salvar.")
@@ -182,16 +189,23 @@ router.post('/coment/perfil', authUser, async (req, res)=>{
         const update = {
             coments:{
                 user: req.user.name,
-                coment: req.body.coment
+                coment: req.body.coment,
+                idComent: mongoose.Types.ObjectId()
             }
         }
-        await Post.findByIdAndUpdate({_id: id},{$push:update})
-        req.flash("success_msg", "Sucesso!")
-        res.redirect('/user/perfil')
+        if(!req.body.coment || typeof req.body.coment == undefined || req.body.coment == null){
+            req.flash("error_msg", "Houve um erro ao salvar.")
+            res.redirect('/user/perfil')
+        }else{
+            await Post.findByIdAndUpdate({_id: id},{$push:update})
+            req.flash("success_msg", "Sucesso!")
+            res.redirect('/user/perfil')
+        }
+        
     }catch(err){
         console.log(err)
         req.flash("error_msg", "Houve um erro ao salvar.")
-        res.redirect('/user/perfil')
+        res.redirect('/')
     }
        
 })
@@ -200,18 +214,16 @@ router.post('/delete/coment', authUser, async (req, res) => {
     try{
         
         const id = req.body.id
-        const index = req.body.indexComent
-        console.log(index, id)
-        await Post.findOneAndUpdate({_id: id},
-           {$pull:{"coments": {index} }}
-        )
+        const idComent = req.body.idComent
+
+        await Post.findByIdAndUpdate({_id: id}, {$pull:{coments:{idComent:idComent}} })
         req.flash('success_msg', 'Comentário deletado')
         res.redirect('/user/perfil')
-       
+    
     }catch(err){
         console.log(err)
         req.flash('error_msg', 'Erro ao Deletar comentário')
-        res.redirect('/')
+        res.redirect('/user/perfil')
     }
 })
 

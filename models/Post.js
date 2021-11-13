@@ -22,7 +22,8 @@ const Post = new Schema({
     },
     coments:{
         user: {type: String},
-        coment: {type: String}
+        coment: {type: String},
+        idComent: {type: String}
     },
     datePost:{
         type: String,
