@@ -115,7 +115,7 @@ router.post('/register', (req, res) => {
 })
 
 //add post
-router.post('/post/add', authUser, (req, res) => {
+router.post('/post/add', authUser, async (req, res) => {
     
     const newPost = {
         user: req.user._id,
@@ -128,7 +128,7 @@ router.post('/post/add', authUser, (req, res) => {
         req.flash("error_msg", "Texto invalido ou campo vazio")
         res.redirect('/')
     } else {
-        new Post(newPost).save().then(() => {
+        await new Post(newPost).save().then(() => {
             req.flash("success_msg", "Sucesso!")
             res.redirect('/')
         }).catch((err) => {
