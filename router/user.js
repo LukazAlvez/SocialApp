@@ -121,7 +121,6 @@ router.post('/post/add', authUser, (req, res) => {
         user: req.user._id,
         post: req.body.feed,
         img: req.body.img,
-        datePost: moment().add(3, 'days').calendar(),
         date: Date.now()
     }
 
